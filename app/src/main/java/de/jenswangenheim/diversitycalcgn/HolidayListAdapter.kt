@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 import android.widget.TextView
 
-class HolidayListAdapter(val items: List<String>) :
+class HolidayListAdapter(val items: List<Holiday>) :
         RecyclerView.Adapter<HolidayListAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -12,7 +12,7 @@ class HolidayListAdapter(val items: List<String>) :
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = items[position]
+        holder.textView.text = items[position].name
     }
 
     override fun getItemCount(): Int = items.size

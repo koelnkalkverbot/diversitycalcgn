@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
         doAsync {
             val items = Request(CAL_DATA_DOWNLOAD_URL).run()
             runOnUiThread {
-                val names = items.map { it.name }
-                rvDates.adapter = HolidayListAdapter(names)
+                rvDates.adapter = HolidayListAdapter(items)
             }
         }
     }
