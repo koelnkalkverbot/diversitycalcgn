@@ -1,12 +1,14 @@
 package de.jenswangenheim.diversitycalcgn
 
-import android.util.Log
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import java.net.URL
 
 class Request(private val url: String) {
 
-    fun run() {
-        val dataAsCsv = URL(url).readText()
-        Log.d(Request::class.java.simpleName, dataAsCsv.take(500))
+    fun run(): MutableList<Holiday> {
+        val holidayType = object : TypeToken<MutableList<Holiday>>() {}.type
+        val holidaysJSON = URL(url).readText()
+        return Gson().fromJson(holidaysJSON, holidayType)
     }
 }
