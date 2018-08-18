@@ -8,7 +8,14 @@ data class Holiday(@SerializedName("Feiertage") val name: String,
                    @SerializedName("Beschreibung")val description: String,
                    @SerializedName("Art")val type: String,
                    @SerializedName("von")val from: Date,
-                   @SerializedName("bis")val to: Date) {
+                   @SerializedName("bis")val to: Date) : Comparable<Holiday> {
+
+    override fun compareTo(other: Holiday) = when {
+        this.from < other.from -> -1
+        this.from > other.from -> 1
+        else -> 0
+    }
+
     companion object {
         val DATE_FORMAT_PATTERN_LONG: String = "dd.MM.yyyy"
         val DATE_FORMAT_PATTERN_SHORT: String = "dd. MMM"
