@@ -17,7 +17,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         with (holiday) {
             nameView.text = name
             fromView.text = Holiday.dateAsString(Holiday.DATE_FORMAT_PATTERN_SHORT, from)
-            if (DateUtils.isToday(from.time)) {
+            if (DateUtils.isToday(from.toDate().time)) {
                 cardView.setCardBackgroundColor(Color.RED)
             } else {
                 cardView.setCardBackgroundColor(Color.WHITE)

@@ -7,14 +7,13 @@ import android.support.v7.widget.RecyclerView
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
-import java.util.*
-
+import org.joda.time.DateTime
 
 
 class MainActivity : AppCompatActivity() {
 
     companion object {
-        val CAL_DATA_DOWNLOAD_URL = "http://jenswangenheim.de/diversity_calendar.json"
+        const val CAL_DATA_DOWNLOAD_URL = "http://jenswangenheim.de/diversity_calendar.json"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,18 +25,17 @@ class MainActivity : AppCompatActivity() {
 
         doAsync {
             val items = Request(CAL_DATA_DOWNLOAD_URL).run()
-            items.add(Holiday("Testtag", "Lorem ipsum", "Typ", Date(System.currentTimeMillis()), Date(System.currentTimeMillis())))
             items.sortBy { it.from }
             uiThread {
                 rvDates.adapter = HolidayListAdapter(items)
-                val index = findClosestDateInHolidays(items)
-                rvDates.scrollToPosition(index)
+                val datesList = items.map { it.from }
+                rvDates.scrollToPosition(indexOfClosestDate(datesList))
             }
         }
     }
 
-    private fun findClosestDateInHolidays(holidays: List<Holiday>): Int {
-        // TODO fix implementation
-        return -(holidays.binarySearch(Holiday("Testtag", "Lorem ipsum", "Typ", Date(System.currentTimeMillis()), Date(System.currentTimeMillis()))))
+    private fun indexOfClosestDate(dates: List<DateTime>): Int {
+        val date = java.util.TreeSet<DateTime>(dates).lower(DateTime.now())
+        return dates.indexOf(date)
     }
 }
