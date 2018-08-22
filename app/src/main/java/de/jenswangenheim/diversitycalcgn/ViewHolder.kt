@@ -6,7 +6,7 @@ import android.text.format.DateUtils
 import android.view.View
 import kotlinx.android.synthetic.main.holiday_list_item.view.*
 
-class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+class ViewHolder(view: View, private val itemClick: (Holiday) -> Unit) : RecyclerView.ViewHolder(view) {
     fun bindHoliday(holiday: Holiday) {
         with (holiday) {
             itemView.tvName.text = name
@@ -16,6 +16,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             } else {
                 itemView.cardView.setCardBackgroundColor(Color.WHITE)
             }
+            itemView.setOnClickListener { itemClick(this) }
         }
     }
 }

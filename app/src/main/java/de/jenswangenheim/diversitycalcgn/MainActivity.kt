@@ -1,5 +1,6 @@
 package de.jenswangenheim.diversitycalcgn
 
+import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
@@ -25,8 +26,12 @@ class MainActivity : AppCompatActivity() {
             val items = Request(CAL_DATA_DOWNLOAD_URL).run()
             items.sortBy { it.from }
             uiThread {
-                rvDates.adapter = HolidayListAdapter(items)
                 val datesList = items.map { it.from }
+                rvDates.adapter = HolidayListAdapter(items) {
+                    val intent = Intent(this@MainActivity, DetailActivity::class.java)
+                    intent.putExtra(DetailActivity.HOLIDAY, it)
+                    startActivity(intent)
+                }
                 rvDates.scrollToPosition(indexOfClosestDate(datesList) - 1)
             }
         }
