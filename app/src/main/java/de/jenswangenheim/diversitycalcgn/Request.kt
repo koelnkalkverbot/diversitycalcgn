@@ -18,11 +18,11 @@ class Request(private val url: String) {
     }
 
     inner class HolidayDateSerializer : JsonDeserializer<DateTime> {
-        override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): DateTime {
+        override fun deserialize(json: JsonElement?, typeOfT: Type?, context: JsonDeserializationContext?): DateTime? {
             if (json!!.asString.isEmpty()) {
                 return Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, Holiday.SINGLE_DAY_MARKER_DATE)
             }
-            return Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, json.asString)
+            return null
         }
     }
 }
