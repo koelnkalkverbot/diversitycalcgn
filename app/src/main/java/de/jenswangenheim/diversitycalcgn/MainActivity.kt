@@ -3,9 +3,8 @@ package de.jenswangenheim.diversitycalcgn
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
-import org.jetbrains.anko.find
 import org.jetbrains.anko.uiThread
 import org.joda.time.DateTime
 
@@ -20,7 +19,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val rvDates: RecyclerView = find(R.id.rv_dates)
         rvDates.layoutManager = LinearLayoutManager(this)
 
         doAsync {
@@ -29,7 +27,7 @@ class MainActivity : AppCompatActivity() {
             uiThread {
                 rvDates.adapter = HolidayListAdapter(items)
                 val datesList = items.map { it.from }
-                rvDates.scrollToPosition(indexOfClosestDate(datesList))
+                rvDates.scrollToPosition(indexOfClosestDate(datesList) - 1)
             }
         }
     }
