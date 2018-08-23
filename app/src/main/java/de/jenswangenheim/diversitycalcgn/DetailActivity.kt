@@ -2,6 +2,9 @@ package de.jenswangenheim.diversitycalcgn
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.transition.Slide
+import android.view.Gravity
+import android.view.Window
 import de.jenswangenheim.diversitycalcgn.Holiday.Companion.DATE_FORMAT_PATTERN_LONG
 import kotlinx.android.synthetic.main.activity_detail.*
 
@@ -13,6 +16,9 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        with(window) {
+            requestFeature(Window.FEATURE_SWIPE_TO_DISMISS)
+        }
         setContentView(R.layout.activity_detail)
         bindHoliday(intent.getSerializableExtra(HOLIDAY) as Holiday)
 
