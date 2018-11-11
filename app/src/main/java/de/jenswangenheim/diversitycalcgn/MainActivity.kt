@@ -13,9 +13,6 @@ import org.joda.time.DateTime
 import android.support.v4.view.ViewCompat
 import android.support.v4.app.ActivityOptionsCompat
 
-
-
-
 class MainActivity : AppCompatActivity(), ViewHolder.OnHolidayItemClickedListener {
 
     companion object {
@@ -59,7 +56,7 @@ class MainActivity : AppCompatActivity(), ViewHolder.OnHolidayItemClickedListene
             val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
                     this,
                     textView,
-                    ViewCompat.getTransitionName(textView))
+                    ViewCompat.getTransitionName(textView)!!)
 
             startActivity(intent, options.toBundle())
         } else {
