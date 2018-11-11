@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Diversity Calendar</string>
-    <string formattes="false" name="from_to_date_format">%s - %s</string>
+    <string formatted="false" name="from_to_date_format">%s - %s</string>
 </resources>

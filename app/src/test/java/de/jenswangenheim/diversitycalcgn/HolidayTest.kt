@@ -1,5 +1,6 @@
 package de.jenswangenheim.diversitycalcgn
 
+import de.jenswangenheim.diversitycalcgn.model.Holiday
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -11,20 +12,20 @@ class HolidayTest {
 
     init {
         holidayList.add(Holiday("Tag2", "Lorem ipsum", "Type",
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "01.02.2018"),
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "01.02.2018")))
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "01.02.2018"),
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "01.02.2018")))
 
         holidayList.add(Holiday("Tag4", "Lorem ipsum", "Type",
                 Date(System.currentTimeMillis()),
                 Date(System.currentTimeMillis())))
 
         holidayList.add(Holiday("Tag3", "Lorem ipsum", "Type",
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "11.06.2018"),
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "11.06.2018")))
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "11.06.2018"),
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "11.06.2018")))
 
         holidayList.add(Holiday("Tag1", "Lorem ipsum", "Type",
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "02.01.2018"),
-                        Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "02.01.2018")))
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "02.01.2018"),
+                Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "02.01.2018")))
     }
 
     @Test

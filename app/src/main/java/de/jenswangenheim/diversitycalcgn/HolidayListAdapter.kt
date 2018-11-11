@@ -4,16 +4,15 @@ import android.support.v4.view.ViewCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import de.jenswangenheim.diversitycalcgn.model.Holiday
 import kotlinx.android.synthetic.main.holiday_list_item.view.*
 
 class HolidayListAdapter(private val items: List<Holiday>, private val itemClick:
         ViewHolder.OnHolidayItemClickedListener) : RecyclerView.Adapter<ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.holiday_list_item,
-                parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.holiday_list_item,
+                parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

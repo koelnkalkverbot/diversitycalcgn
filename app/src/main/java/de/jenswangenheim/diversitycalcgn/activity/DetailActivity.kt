@@ -1,11 +1,12 @@
-package de.jenswangenheim.diversitycalcgn
+package de.jenswangenheim.diversitycalcgn.activity
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import de.jenswangenheim.diversitycalcgn.Holiday.Companion.DATE_FORMAT_PATTERN_LONG
+import de.jenswangenheim.diversitycalcgn.model.Holiday.Companion.DATE_FORMAT_PATTERN_LONG
 import kotlinx.android.synthetic.main.activity_detail.*
 import android.os.Build
-
+import de.jenswangenheim.diversitycalcgn.R
+import de.jenswangenheim.diversitycalcgn.model.Holiday
 
 
 class DetailActivity : AppCompatActivity() {

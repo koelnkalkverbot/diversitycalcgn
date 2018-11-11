@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView
 import android.text.format.DateUtils
 import android.view.View
 import android.widget.TextView
+import de.jenswangenheim.diversitycalcgn.model.Holiday
 import kotlinx.android.synthetic.main.holiday_list_item.view.*
 
 class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {

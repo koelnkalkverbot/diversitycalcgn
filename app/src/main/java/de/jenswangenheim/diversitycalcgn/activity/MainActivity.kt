@@ -1,4 +1,4 @@
-package de.jenswangenheim.diversitycalcgn
+package de.jenswangenheim.diversitycalcgn.activity
 
 import android.content.Intent
 import android.os.Build
@@ -9,9 +9,13 @@ import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
-import org.joda.time.DateTime
 import android.support.v4.view.ViewCompat
 import android.support.v4.app.ActivityOptionsCompat
+import de.jenswangenheim.diversitycalcgn.HolidayListAdapter
+import de.jenswangenheim.diversitycalcgn.R
+import de.jenswangenheim.diversitycalcgn.Request
+import de.jenswangenheim.diversitycalcgn.ViewHolder
+import de.jenswangenheim.diversitycalcgn.model.Holiday
 
 class MainActivity : AppCompatActivity(), ViewHolder.OnHolidayItemClickedListener {
 
@@ -34,18 +38,13 @@ class MainActivity : AppCompatActivity(), ViewHolder.OnHolidayItemClickedListene
             uiThread {
                 val datesList = items.map { it.from }
                 rvDates.adapter = HolidayListAdapter(items, this@MainActivity)
-                rvDates.scrollToPosition(indexOfClosestDate(datesList) - 1)
+                rvDates.scrollToPosition(Holiday.closestDate(datesList) - 1)
             }
         }
     }
 
     override fun onHolidayItemClicked(position: Int, holiday: Holiday, textView: TextView) {
         openDetailActivity(holiday, textView)
-    }
-
-    private fun indexOfClosestDate(dates: List<DateTime>): Int {
-        val date = java.util.TreeSet<DateTime>(dates).lower(DateTime.now())
-        return dates.indexOf(date)
     }
 
     private fun openDetailActivity(holiday: Holiday, textView: TextView) {

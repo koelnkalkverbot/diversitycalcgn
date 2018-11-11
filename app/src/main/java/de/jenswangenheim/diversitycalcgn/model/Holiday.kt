@@ -1,4 +1,4 @@
-package de.jenswangenheim.diversitycalcgn
+package de.jenswangenheim.diversitycalcgn.model
 
 import com.google.gson.annotations.SerializedName
 import org.joda.time.DateTime
@@ -13,12 +13,6 @@ data class Holiday(@SerializedName("Feiertage") val name: String,
                    @SerializedName("von")val from: DateTime,
                    @SerializedName("bis")val to: DateTime?) : Comparable<Holiday>, Serializable {
 
-    override fun compareTo(other: Holiday) = when {
-        this.from.isBefore(other.from) -> -1
-        this.from.isAfter(other.from) -> 1
-        else -> 0
-    }
-
     companion object {
         val DATE_FORMAT_PATTERN_LONG = DateTimeFormat.forPattern("dd.MM.yyyy") as DateTimeFormatter
         val DATE_FORMAT_PATTERN_SHORT = DateTimeFormat.forPattern("dd. MMM") as DateTimeFormatter
@@ -30,5 +24,16 @@ data class Holiday(@SerializedName("Feiertage") val name: String,
         fun stringAsDate(pattern: DateTimeFormatter, date: String): DateTime {
             return DateTime.parse(date, pattern)
         }
+
+        fun closestDate(dates: List<DateTime>): Int {
+            val date = java.util.TreeSet<DateTime>(dates).lower(DateTime.now())
+            return dates.indexOf(date)
+        }
+    }
+
+    override fun compareTo(other: Holiday) = when {
+        this.from.isBefore(other.from) -> -1
+        this.from.isAfter(other.from) -> 1
+        else -> 0
     }
 }
