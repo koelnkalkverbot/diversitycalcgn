@@ -2,24 +2,31 @@ package de.jenswangenheim.diversitycalcgn
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Window
 import de.jenswangenheim.diversitycalcgn.Holiday.Companion.DATE_FORMAT_PATTERN_LONG
 import kotlinx.android.synthetic.main.activity_detail.*
+import android.os.Build
+
+
 
 class DetailActivity : AppCompatActivity() {
 
     companion object {
         const val HOLIDAY = "DetailActivity:holiday"
+        const val TRANSITION_NAME = "DetailActivity:transitionName"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        with(window) {
-            requestFeature(Window.FEATURE_SWIPE_TO_DISMISS)
-        }
         setContentView(R.layout.activity_detail)
-        bindHoliday(intent.getSerializableExtra(HOLIDAY) as Holiday)
+//        supportPostponeEnterTransition()
+//        supportStartPostponedEnterTransition()
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            val transitionName = intent.getSerializableExtra(TRANSITION_NAME) as String
+            tvNameDetail.transitionName = transitionName
+        }
+
+        bindHoliday(intent.getSerializableExtra(HOLIDAY) as Holiday)
     }
 
     private fun bindHoliday(holiday: Holiday) {
