@@ -16,8 +16,10 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             itemView.tvNameType.text = type
             itemView.tvDateFrom.text = Holiday.dateAsString(Holiday.DATE_FORMAT_PATTERN_SHORT, from)
             itemView.cardView.setCardBackgroundColor(Color.WHITE)
+            itemView.divider.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
             if (DateUtils.isToday(from.toDate().time)) {
                 itemView.cardView.setCardBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorAccent))
+                itemView.divider.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.colorPrimary))
             }
         }
     }
