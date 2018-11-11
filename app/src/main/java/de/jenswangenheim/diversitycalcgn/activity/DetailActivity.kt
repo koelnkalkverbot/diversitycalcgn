@@ -19,8 +19,6 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-//        supportPostponeEnterTransition()
-//        supportStartPostponedEnterTransition()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             val transitionName = intent.getSerializableExtra(TRANSITION_NAME) as String
