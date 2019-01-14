@@ -1,4 +1,10 @@
 <resources>
-    <string name="app_name">Diversity Calendar</string>
+    <string name="app_name">Diversity Kalender Köln</string>
     <string formatted="false" name="from_to_date_format">%s - %s</string>
+
+    <string name="imprint">Impressum</string>
+    <string name="send_mail">Mail senden</string>
+    <string name="about_title">Impressum</string>
+    <string name="about_message"><![CDATA[<p>Angaben gemäß § 5 TMG</p><p>Jens Wangenheim<br>50937 Köln<p><p>E-Mail: apps@jenswangenheim.de<br>Twitter: koelnkalkverbot<p>]]></string>
+    <string name="add_to_calendar">Zu persönlichem Kalender hinzufügen</string>
 </resources>

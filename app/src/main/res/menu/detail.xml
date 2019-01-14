@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/add_to_calendar"
+          android:icon="@drawable/ic_calendar"
+          android:title="@string/add_to_calendar"
+          app:showAsAction="always"
+          tools:ignore="AlwaysShowAction"/>
+</menu>

@@ -1,6 +1,7 @@
 package de.jenswangenheim.diversitycalcgn
 
 import de.jenswangenheim.diversitycalcgn.model.Holiday
+import org.joda.time.DateTime
 import org.junit.Test
 
 import org.junit.Assert.*
@@ -16,8 +17,8 @@ class HolidayTest {
                 Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "01.02.2018")))
 
         holidayList.add(Holiday("Tag4", "Lorem ipsum", "Type",
-                Date(System.currentTimeMillis()),
-                Date(System.currentTimeMillis())))
+                DateTime(System.currentTimeMillis()),
+                DateTime(System.currentTimeMillis())))
 
         holidayList.add(Holiday("Tag3", "Lorem ipsum", "Type",
                 Holiday.stringAsDate(Holiday.DATE_FORMAT_PATTERN_LONG, "11.06.2018"),
